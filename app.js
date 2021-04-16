@@ -437,6 +437,7 @@ const createTray = () => {
   tray.on("mouse-move", (e) => {
     if (
       store.get("detachedMode") ||
+      window.isDestroyed() ||
       window.isAlwaysOnTop() ||
       store.get("disableHover")
     ) {
