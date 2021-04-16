@@ -105,8 +105,6 @@ const checkForAvailableInstance = () => {
     });
     let found;
     for (let instance of instances.filter((e) => e.url !== currentInstance())) {
-    
- 
         const request = net.request(`${instance}/auth/providers`);
         request.on("response", (response) => {
           if (response.statusCode === 200) {
@@ -494,8 +492,8 @@ const setWindowFocusTimer = () => {
 app.on("ready", () => {
   checkAutoStart();
   useAutoUpdater();
-  createTray();
   createMainWindow(!store.has("currentInstance"));
+  createTray();
   if (process.platform === "linux") tray.setContextMenu(getMenu());
   startAvailabilityCheck();
   // register shortcut
